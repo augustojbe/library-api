@@ -1,10 +1,7 @@
 package com.augustojbe.libraryapi.libraryapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "autor")
 public class Autor implements Serializable {
@@ -33,7 +31,8 @@ public class Autor implements Serializable {
     @Column(length = 100, nullable = false)
     private String nacionalidade;
 
-    @OneToMany(mappedBy = "autor")
+    //@OneToMany(mappedBy = "autor")
+    @Transient
     private List<Livro> livros;
 
 }
