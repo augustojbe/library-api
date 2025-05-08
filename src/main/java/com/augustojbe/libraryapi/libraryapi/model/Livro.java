@@ -1,10 +1,7 @@
 package com.augustojbe.libraryapi.libraryapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "livro")
 public class Livro implements Serializable {
@@ -38,7 +36,9 @@ public class Livro implements Serializable {
     @Column(precision = 18, scale = 2)
     private BigDecimal preco;
 
-    @ManyToOne//(cascade = CascadeType.ALL)
+    @ManyToOne(
+            //cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "id_autor")
     private Autor autor;
 

@@ -31,8 +31,7 @@ public class Autor implements Serializable {
     @Column(length = 100, nullable = false)
     private String nacionalidade;
 
-    //@OneToMany(mappedBy = "autor")
-    @Transient
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Livro> livros;
 
 }
